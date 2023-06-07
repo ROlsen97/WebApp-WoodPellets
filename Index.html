@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Rubens Wood Pellets</title>
+</head>
+
+<body>
+    <div id="app" class="container mt-5">
+        <h1>Wood Pellets</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quality</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="woodpellet in WoodPellets" :key="woodpellet.Id">
+                    <td>{{ woodpellet.id }}</td>
+                    <td>{{ woodpellet.brand }}</td>
+                    <td>{{ woodpellet.price }}</td>
+                    <td>{{ woodpellet.quality }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <h2>Get by ID (GET)</h2>
+            <input v-model="idToGetBy" placeholder="id" type="number" />
+            <button v-on:click="getById(idToGetBy)" class="btn btn-primary">Get by id</button>
+            <div v-if="woodpellet">
+                {{woodpellet.id}} {{woodpellet.brand}} {{ woodpellet.price}} {{woodpellet.quality}}
+            </div>
+            <div v-else>No such woodpellet</div>
+        </table>
+
+    </div>
+    <script src="vue.js"></script>
+</body>
+
+</html>
